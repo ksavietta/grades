@@ -2,16 +2,19 @@
 
 # assignment grade
 
-list of grades should have all of the assignment grades
+# list of grades should have all of the assignment grades
 
 class AssignmentGrade
+  attr_accessor :first,:last,:grade
 
-  def initialize(letter_grade)
+  def initialize(first, last, grade)
+    @first = first
+    @last = last
     @grade = grade
   end
 
-  def method_name
-
-  end
+  # def letter_grade
+  #   #assignmentgrade evaluates what letter it is
+  # end
 
 end

@@ -6,6 +6,8 @@ class FinalGrade
     @grades = grades
   end
 
-
+  def letter_grade
+    #assignmentgrade evaluates what letter it is
+  end
 
 end
