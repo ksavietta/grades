@@ -1,4 +1,4 @@
-# FinalGrade - an object that encapsulates the concept of a LETTER FINAL GRADE
+# FinalGrade - an object that encapsulates the concept of a
 
 class FinalGrade
 

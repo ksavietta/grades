@@ -5,15 +5,6 @@ require_relative 'grade_summary'
 require_relative 'student'
 require 'table_print'
 
-# file = 'history_grades.csv'
-# history_grades = GradeReader.new(file)
-
-
-# p history_grades.parse_data[0]
-# p history_grades.parse_data[1]
-
-# formatted_history_grades = history_grades.format
-
 reader = GradeReader.new("history_grades.csv")
 students = reader.import
 # tp students
@@ -25,3 +16,4 @@ puts "The class max is #{report.class_max}"
 
 # student_grades = FinalGrade.new(students)
 
+student1.grades
