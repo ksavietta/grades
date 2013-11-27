@@ -2,16 +2,14 @@
 require 'pry'
 class GradeSummary
 
-    def initialize(students)
-      @students = students
-    end
+  def initialize(assignment_grades)
+    @assignment_grades = assignment_grades
+  end
 
 def class_average
   class_grades = []
-  @students.each do |student|
-    student.grades.each do |grade|
-      class_grades << grade
-    end
+  @assignment_grades.each do |assignment_grade|
+      class_grades << assignment_grade.score
   end
     sum = 0
     class_grades.each do |grade|
@@ -22,23 +20,22 @@ end
 
 def class_min
   class_grades = []
-  @students.each do |student|
-    student.grades.each do |grade|
-      class_grades << grade.to_i
-    end
+  @assignment_grades.each do |assignment_grade|
+      class_grades << assignment_grade.score
   end
   class_grades.min
 end
 
 def class_max
-   class_grades = []
-  @students.each do |student|
-    student.grades.each do |grade|
-      class_grades << grade.to_i
-    end
+  class_grades = []
+  @assignment_grades.each do |assignment_grade|
+      class_grades << assignment_grade.score
   end
   class_grades.max
 end
 
+def summary
+  {average:class_average, min:class_min,max:class_max}
+end
 
 end
