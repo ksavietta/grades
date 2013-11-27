@@ -1,11 +1,11 @@
 # Student - an object that represents a participant in a class
 class Student
-  attr_accessor :first_name, :last_name
+  attr_accessor :first, :last
 
 
-  def initialize(first_name, last_name)
-    @first_name = first_name
-    @last_name = last_name
+  def initialize(first, last)
+    @first = first
+    @last = last
     @grades = []
   end
 

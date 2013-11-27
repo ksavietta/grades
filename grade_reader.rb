@@ -12,21 +12,22 @@ class GradeReader
   # returns array of student objects
   def import
     raw_grade_data = File.read(@file_name)
-    grades_array = CSV.parse(raw_grade_data, headers:true)
+    @grades_array = CSV.parse(raw_grade_data, headers:true)
 
-    assignment_grades = []
-    grades_array.each_with_index do |sc, index|
-      assignment_grades << AssignmentGrade.new(sc['First'], sc['Last'],[sc['Grade1'],sc['Grade2'],sc['Grade3'],sc['Grade4'],sc['Grade5']])
-
+    @assignment_grades = []
+    @grades_array.each do |sc|
+      (1..5).each do |i|
+        @assignment_grades << AssignmentGrade.new(sc['First'], sc['Last'], sc["Grade#{i}"].to_i)
+      end
     end
-    assignment_grades
+    @assignment_grades
   end
 
   def find_grades_for_student(student)
 
     matched_grades = []
-    grades.each do |assignment_grade|
-      if student.first == assignment_grade.first
+    @assignment_grades.each do |assignment_grade|
+      if student.first == assignment_grade.first && student.last == assignment_grade.last
         matched_grades << assignment_grade
       end
     end

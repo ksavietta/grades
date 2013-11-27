@@ -2,7 +2,9 @@
 
 class FinalGrade
 
-  def initialize(grades)
+  def initialize(first, last, grades)
+    @first = first
+    @last = last
     @grades = grades
   end
 
