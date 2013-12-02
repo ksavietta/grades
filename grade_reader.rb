@@ -23,20 +23,8 @@ class GradeReader
         @grades << AssignmentGrade.new(student[0], student[1], student["Grade#{i}"].to_i)
       end
     end
-      @grades
+    @grades
   end
 
-
-    def find_grades_for_student(student)
-
-      matched_grades = []
-      @scores.each do |score|
-        if student.first == score.first && student.last == score.last
-          matched_grades << score
-        end
-      end
-      matched_grades
-    end
-
-  end
+end
 

@@ -10,12 +10,37 @@ require_relative 'student'
 
 
 class Student
-  attr_accessor :first, :last
+  attr_accessor :first, :last, :scores, :average, :grade
 
-  def initialize(first, last, scores)
+  def initialize(first, last, scores=nil)
     @first = first
     @last = last
-    @scores = []
+    @scores = scores
+    @average = average
+    @grade = grade
   end
+
+  def average
+    total = 0
+    @scores.each do |score|
+        total += score
+    end
+    @average = total / @scores.length
+  end
+
+  def grade
+  if @average > 90
+    @grade = "A"
+  elsif @average > 80
+    @grade = "B"
+  elsif @average > 70
+    @grade = "C"
+  elsif @average > 60
+    @grade = "D"
+  else
+    @grade = "F"
+  end
+  @grade
+end
 
 end

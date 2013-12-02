@@ -14,7 +14,4 @@ class AssignmentGrade
     @score = score
   end
 
-  def letter_grade
-  end
-
 end
