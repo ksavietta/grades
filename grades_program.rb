@@ -15,7 +15,10 @@ end until File.exists?(file_name)
 
 
 grade_report = GradeReader.new(file_name)
+
+
 history_assignments = grade_report.import
+
 
 student_report = StudentReader.new(file_name)
 history_students = student_report.import
@@ -34,7 +37,6 @@ history_final_grades.sort_by! {|final_grade| final_grade.student.last}
 history_final_grades.each do |final_grade|
   puts "Name: #{final_grade.student.first} #{final_grade.student.last} | Final Score: #{final_grade.final_score} | Final Grade: #{final_grade.final_grade}"
 end
-
 
 CSV.open('report_card_data.csv', 'w') do |csv|
   csv << ["Last Name", "First Name", "Final Grade", "Final Score"]

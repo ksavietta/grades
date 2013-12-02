@@ -1,4 +1,4 @@
-# FinalGrade - an object that encapsulates the concept of a
+# FinalGrade - an object that encapsulates the concept of a student's class information
 
 class FinalGrade
 attr_accessor :student, :assignment_grades, :final_score, :final_grade

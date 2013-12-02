@@ -14,9 +14,11 @@ class GradeReader
     raw_grade_data = File.read(@file_name)
     @grades_array = CSV.parse(raw_grade_data, headers:true)
 
+    num_grades = @grades_array.headers.count{|x|x.include?("Grade")}
+
     @assignment_grades = []
     @grades_array.each do |sc|
-      (1..5).each do |i|
+      (1..num_grades).each do |i|
         @assignment_grades << AssignmentGrade.new(sc['First'], sc['Last'], sc["Grade#{i}"].to_i)
       end
     end
@@ -24,7 +26,6 @@ class GradeReader
   end
 
   def find_grades_for_student(student)
-
     matched_grades = []
     @assignment_grades.each do |assignment_grade|
       if student.first == assignment_grade.first && student.last == assignment_grade.last
@@ -34,14 +35,6 @@ class GradeReader
     matched_grades
     # for all assignments in history, return grades that match with student's name
   end
-
-
 end
-
-
-# results = []
-# CSV.foreach(@filename, headers:true) do |row|
-#   results << Student.new(row["first"], row["last"], )
-# end
 
 

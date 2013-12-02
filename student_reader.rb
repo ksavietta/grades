@@ -1,7 +1,6 @@
-# GradeReader - an object that is responsible for reading in grade data from a CSV
+# StudentReader - an object that is responsible for reading in student data from a CSV
 require 'CSV'
 require_relative 'student'
-
 
 class StudentReader
   def initialize(file_name)
@@ -9,19 +8,14 @@ class StudentReader
     @file_name = file_name
   end
 
-  # returns array of student objects
   def import
     raw_grade_data = File.read(@file_name)
-    student_grades_array = CSV.parse(raw_grade_data)
+    @student_array = CSV.parse(raw_grade_data, headers:true)
 
-    students = []
-    student_grades_array.each_with_index do |student, index|
-      next if index == 0
-      students << Student.new(student[0], student[1])
-
+    @students = []
+    @student_array.each do |sc|
+        @students << Student.new(sc['First'], sc['Last'])
     end
-    students
+    @students
   end
-
-
 end
