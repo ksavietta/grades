@@ -1,44 +1,24 @@
 # GradeSummary - an object that encapsulates the concept of the class' aggregate performance
 require 'pry'
+require_relative 'grade_reader'
+require_relative 'assignment_grade'
+require_relative 'student_reader'
+require_relative 'final_grade'
+require_relative 'student'
+
 class GradeSummary
 
-    def initialize(students)
-      @students = students
-    end
+  def initialize(grades)
+    @grades = grades
+  end
 
-def class_average
-  class_grades = []
-  @students.each do |student|
-    student.grades.each do |grade|
-      class_grades << grade
+  def class_average
+    class_average = 0
+    @grades.each do |grade|
+      class_average += grade.score
     end
+    class_average.to_f / @grades.length
   end
-    sum = 0
-    class_grades.each do |grade|
-    sum += grade.to_f
-  end
-  sum / class_grades.length
-end
-
-def class_min
-  class_grades = []
-  @students.each do |student|
-    student.grades.each do |grade|
-      class_grades << grade.to_i
-    end
-  end
-  class_grades.min
-end
-
-def class_max
-   class_grades = []
-  @students.each do |student|
-    student.grades.each do |grade|
-      class_grades << grade.to_i
-    end
-  end
-  class_grades.max
 end
 
 
-end

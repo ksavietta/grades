@@ -1,20 +1,20 @@
-# AssignmentGrade - an object that encapsulates the concept of a STUDENT AVERAGE
-
-# assignment grade
-
-# list of grades should have all of the assignment grades
+require_relative 'grade_reader'
+require_relative 'grade_summary'
+require_relative 'assignment_grade'
+require_relative 'student_reader'
+require_relative 'final_grade'
+require_relative 'student'
 
 class AssignmentGrade
-  attr_accessor :first,:last,:grade
+  attr_accessor :first, :last, :score
 
-  def initialize(first, last, grade)
+  def initialize(first, last, score)
     @first = first
     @last = last
-    @grade = grade
+    @score = score
   end
 
-  # def letter_grade
-  #   #assignmentgrade evaluates what letter it is
-  # end
+  def letter_grade
+  end
 
 end
